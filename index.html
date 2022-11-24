@@ -7,9 +7,11 @@
     <link rel="shortcut icon" href="assets/favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="script.js" defer></script>
+    <!-- <script src="image-loader.js" defer></script> -->
   </head>
 
   <body>
+    
     <header class="header">
       <nav class="header__content">
         <div class="header__buttons">
@@ -295,10 +297,13 @@
                     </svg>
                   </div>
                   <div class="story__picture">
-                    <img src="assets/default-user.png" alt="User Picture" />
+                    <img
+                      src="assets/status/dry-air_freezing.jpg"
+                      alt="User Picture"
+                    />
                   </div>
                 </div>
-                <span class="story__user">usernick1</span>
+                <span class="story__user">mushroom1</span>
               </button>
               <button class="story story--has-story">
                 <div class="story__avatar">
@@ -315,7 +320,7 @@
                     <img src="assets/default-user.png" alt="User Picture" />
                   </div>
                 </div>
-                <span class="story__user">usernick2</span>
+                <span class="story__user">oister_boi</span>
               </button>
               <button class="story story--has-story">
                 <div class="story__avatar">
@@ -332,7 +337,7 @@
                     <img src="assets/default-user.png" alt="User Picture" />
                   </div>
                 </div>
-                <span class="story__user">usernick3</span>
+                <span class="story__user">elon_mushroom</span>
               </button>
               <button class="story">
                 <div class="story__avatar">
@@ -548,8 +553,9 @@
               </svg>
             </button>
           </div>
-
+          <!-- POST -->
           <div class="posts">
+            <div id="post-root"> </div>
             <article class="post">
               <div class="post__header">
                 <div class="post__profile">
@@ -597,7 +603,7 @@
                 <div class="post__medias">
                   <img
                     class="post__media"
-                    src="assets/insta-clone.png"
+                    src="assets/images/mushroom.jpeg"
                     alt="Post Content"
                   />
                 </div>
@@ -1317,7 +1323,7 @@
                 </div>
               </div>
             </article>
-          </div>
+            
         </div>
 
         <section class="side-menu">
@@ -1552,5 +1558,13 @@
         </div>
       </button>
     </nav>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+    
+    <!-- MY SCRIPTS -->
+    <script src="postel.js"></script>
+    <!-- <script src="components/but.js"> </script> -->
+
   </body>
 </html>
