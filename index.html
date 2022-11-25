@@ -7,10 +7,13 @@
     <link rel="shortcut icon" href="assets/favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="script.js" defer></script>
+    
+
     <!-- <script src="image-loader.js" defer></script> -->
   </head>
 
   <body>
+    
     
     <header class="header">
       <nav class="header__content">
@@ -258,18 +261,22 @@
     </header>
 
     <main class="main-container">
+      <div id="fullpage" onclick="this.style.display='none'"> </div>
       <section class="content-container">
+
         <div class="content">
+          <!-- STORIES  -->
           <div class="stories">
             <button class="stories__left-button">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path
-                  fill="#fff"
-                  d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"
+                fill="#fff"
+                d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"
                 ></path>
               </svg>
             </button>
-            <div class="stories__content">
+            <div id="story-root"></div>
+           <!--  <div class="stories__content">
               <button class="story story--has-story">
                 <div class="story__avatar">
                   <div class="story__border">
@@ -543,7 +550,7 @@
                 </div>
                 <span class="story__user">usernick15</span>
               </button>
-            </div>
+            </div> -->
             <button class="stories__right-button">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path
@@ -552,12 +559,10 @@
                 ></path>
               </svg>
             </button>
-          </div>
+          </div> 
           <!-- POST -->
           <div class="posts">
-            <div id="app"></div>
-            <!-- <div id="post-root" username="creepydoll24"> </div> -->
-            <!-- <div id="reactpost-root" username="reactposter69"> </div> -->
+            <div id="post-root"></div>
 
             <!-- <article class="post">
               <div class="post__header">
@@ -1566,10 +1571,13 @@
     <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
     
     <!-- MY SCRIPTS -->
-    <script src="postel.js"></script>
+ 
     <script src="ReactPost.js"></script>
-    <script src="App.js"></script>
-    <!-- <script src="components/but.js"> </script> -->
+    <script src="PostSection.js"></script>
+    <script src="StorySection.js"></script>
+    <script src="ReactStory.js"></script>
+    <script src="ReactEmptyStory.js"></script>
+
 
   </body>
 </html>

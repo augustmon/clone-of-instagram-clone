@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+/* .story:active {
+} */
+#fullpage {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  top: 25%;
+  left: 25%;
+  width: 50vw;
+  height: 50vh;
+  border-radius: 25px;
+  background-size: contain;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-color: black;
+}
+
 /* CSS Reset */
 *,
 *::after,
