@@ -1,7 +1,11 @@
 'use strict';
 
 function StorySection() {
-  var currentImage = '';
+  var image = '';
+
+  // setInterval(() => console.log('you see me every 2 seconds'), 2000);
+  // setInterval(() => (image = localStorage.getItem('data')));
+  // setInterval(() => console.log('CURRENT IMAGE: '), image);
 
   return React.createElement(
     'div',
@@ -9,9 +13,11 @@ function StorySection() {
     React.createElement(ReactStory, {
       username: 'my-shroomy',
       storyImage: '/assets/status/wet-air_cold.jpg'
-      // THIS COULD BE SET BY SERIAL PORT SCRIPT
     }),
-    React.createElement(ReactStory, { username: 'jules_xmas', storyImage: currentImage }),
+    React.createElement(ReactStory, {
+      username: 'jules_xmas',
+      storyImage: localStorage.getItem('data')
+    }),
     React.createElement(ReactEmptyStory, null),
     React.createElement(ReactEmptyStory, null),
     React.createElement(ReactEmptyStory, null),

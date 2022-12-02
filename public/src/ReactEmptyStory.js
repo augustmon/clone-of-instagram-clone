@@ -4,7 +4,7 @@ function ReactEmptyStory() {
   // function getMushroomData() {}
 
   return (
-    <button className="story" onClick="">
+    <button className="story">
       <div className="story__avatar">
         <div className="story__border">
           <svg width={64} height={64} xmlns="http://www.w3.org/2000/svg">

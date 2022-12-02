@@ -5,7 +5,7 @@ function ReactEmptyStory() {
 
   return React.createElement(
     "button",
-    { className: "story", onClick: "" },
+    { className: "story" },
     React.createElement(
       "div",
       { className: "story__avatar" },

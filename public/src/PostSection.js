@@ -3,6 +3,7 @@
 function PostSection() {
   return (
     <div>
+      <h1> POSTS </h1>
       <ReactPost username="Dolly_p" postImage="assets/images/doll.jpeg" />;
       <ReactPost username="Dolly_p" postImage="assets/images/mushroom.jpeg" />;
       <ReactPost username="Dolly_p" postImage="assets/images/godzilla.jpeg" />;

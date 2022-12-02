@@ -26,7 +26,6 @@ app.use(express.static('public'));
 
 io.on('connection', (socket) => {
   console.log('Node is listening to port');
-  // socket.on('data', (what) => console.log(what));
   socket.on('disconnect', () => {
     console.log('DISCONNECTED!');
   });
@@ -41,16 +40,45 @@ server.listen(3000, () => {
 const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
 
-let hardpath = 'public/assets/status/dry-air_freezing.jpg';
-io.emit('data', hardpath);
-console.log(hardpath);
+const humKeyWords = {
+  low: 'dry-air',
+  medium: 'humid-air',
+  high: 'wet-air',
+};
+
+const temKeyWords = {
+  low: 'freezing',
+  medium: 'lukewarm',
+  high: 'hot',
+};
+
+let temIndexGlobal = 0;
+let hardpath = '/assets/status/';
+setInterval(emitData, 5000);
+
+const temKeys = Object.keys(temKeyWords);
+const temValues = Object.values(temKeyWords);
+
+// You can clear a periodic function by uncommenting:
+// clearInterval(intervalId);
+function emitData() {
+  let newImage =
+    hardpath + humKeyWords.low + '_' + temValues[temIndexGlobal] + '.jpg';
+  io.emit('data', newImage);
+  console.log(newImage);
+  if (temIndexGlobal >= 2) {
+    temIndexGlobal = 0;
+  } else {
+    temIndexGlobal += 1;
+  }
+}
 
 // const serialPorts = getSerial();
 // console.log(serialPorts);
 // const arduinoPort = serialPorts[0];
 // console.log(arduinoPort);
 
-const arduinoPort = '/dev/cu.usbmodem11301';
+/* const arduinoPort = '/dev/cu.usbmodem11301';
 
 const port = new SerialPort({ path: arduinoPort, baudRate: 9600 });
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' })); // Read the port data
@@ -114,4 +142,4 @@ parser.on('data', (data) => {
 
   io.emit('data', path);
   console.log(path);
-});
+}); */

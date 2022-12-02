@@ -4,6 +4,11 @@ function PostSection() {
   return React.createElement(
     "div",
     null,
+    React.createElement(
+      "h1",
+      null,
+      " POSTS "
+    ),
     React.createElement(ReactPost, { username: "Dolly_p", postImage: "assets/images/doll.jpeg" }),
     ";",
     React.createElement(ReactPost, { username: "Dolly_p", postImage: "assets/images/mushroom.jpeg" }),

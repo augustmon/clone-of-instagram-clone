@@ -1,16 +1,22 @@
 'use strict';
 
 function StorySection() {
-  let currentImage = '';
+  let image = '';
+
+  // setInterval(() => console.log('you see me every 2 seconds'), 2000);
+  // setInterval(() => (image = localStorage.getItem('data')));
+  // setInterval(() => console.log('CURRENT IMAGE: '), image);
 
   return (
     <div className="stories__content">
       <ReactStory
         username="my-shroomy"
-        storyImage="/assets/status/wet-air_cold.jpg"
-        // THIS COULD BE SET BY SERIAL PORT SCRIPT
+        storyImage="/public/assets/status/wet-air_cold.jpg"
       />
-      <ReactStory username="jules_xmas" storyImage={currentImage} />
+      <ReactStory
+        username="jules_xmas"
+        storyImage={localStorage.getItem('data')}
+      />
       <ReactEmptyStory />
       <ReactEmptyStory />
       <ReactEmptyStory />

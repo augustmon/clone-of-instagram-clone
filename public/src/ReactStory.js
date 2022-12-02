@@ -29,7 +29,7 @@ function ReactStory(props) {
           </svg>
         </div>
         <div className="story__picture">
-          <img src={props.storyImage} alt="User Picture" />
+          <img src={props.storyImage} alt={props.storyImage} />
         </div>
       </div>
       <span className="story__user">{props.username}</span>

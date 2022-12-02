@@ -42,7 +42,7 @@ function ReactStory(props) {
       React.createElement(
         'div',
         { className: 'story__picture' },
-        React.createElement('img', { src: props.storyImage, alt: 'User Picture' })
+        React.createElement('img', { src: props.storyImage, alt: props.storyImage })
       )
     ),
     React.createElement(
