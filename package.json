@@ -19,6 +19,9 @@
   "homepage": "https://github.com/augustmon/clone-of-instagram-clone#readme",
   "dependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
+    "babel-preset-react-app": "^3.1.2",
+    "express": "^4.18.2",
+    "serialport": "^10.4.0",
+    "socket.io": "^4.5.3"
   }
 }
