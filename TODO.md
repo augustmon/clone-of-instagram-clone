@@ -13,3 +13,8 @@
 
 CODE TO START JSX PREPROCESSOR in the public directory:
 npx babel --watch public/src --out-dir public --presets react-app/prod
+
+5. Activate all functions only on incoming data!
+   - delete post
+   - update story
+   -
