@@ -258,6 +258,7 @@
         </div>
     <!-- IMAGE PATHNAME  -->
     <h1 id="image-pathname"> HEYO</h1>
+    <button id="delete-post" onclick=""> DELETE LAST POST </button>
     
 
       </nav>
@@ -545,7 +546,7 @@
       socket.on("data", (data) => {
         console.log(data);
         let path = document.getElementById("image-pathname")
-        path.innerText = "Image data" + data
+        path.innerText = "Image data: " + data
         localStorage.setItem('data', data)
         // document.getElementById('story-root').innerHTML = data
         // document.getElementById('reactpost-root').innerText = data
@@ -558,9 +559,9 @@
       </script>
 
     <!-- MY REACT SCRIPTS -->
-    <script src="ReactPost.js"></script>
     <script src="PostSection.js"></script>
     <script src="StorySection.js"></script>
+    <script src="ReactPost.js"></script>
     <script src="ReactStory.js"></script>
     <script src="ReactEmptyStory.js"></script>
 

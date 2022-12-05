@@ -1,14 +1,43 @@
 'use strict';
 
 function PostSection() {
+  const [postArray, setPostArray] = React.useState([
+    'assets/images/doll.jpeg',
+    'assets/images/mushroom.jpeg',
+    'assets/images/godzilla.jpeg',
+    'assets/images/momo.jpeg',
+  ]);
+
+  const deleteBtn = document.getElementById('delete-post');
+  deleteBtn.addEventListener('click', deletePost);
+
+  function deletePost() {
+    if (postArray.length == 0) {
+      setPostArray([
+        'assets/images/doll.jpeg',
+        'assets/images/mushroom.jpeg',
+        'assets/images/godzilla.jpeg',
+        'assets/images/momo.jpeg',
+      ]);
+    } else {
+      const copyOfArray = [...postArray];
+      copyOfArray.pop();
+      setPostArray(copyOfArray);
+    }
+  }
+
+  // turning postArray into React-elements to render out on page
+  let postRenders = postArray.map(function (post, i) {
+    return (post = (
+      <ReactPost key={i} username="Me99" postImage={postArray[i]} />
+    ));
+  });
+
   return (
     <div>
       <h1> POSTS </h1>
-      <ReactPost username="Dolly_p" postImage="assets/images/doll.jpeg" />;
-      <ReactPost username="Dolly_p" postImage="assets/images/mushroom.jpeg" />;
-      <ReactPost username="Dolly_p" postImage="assets/images/godzilla.jpeg" />;
-      <ReactPost username="Dolly_p" postImage="assets/images/momo.jpeg" />;
-      <ReactPost username="Dolly_p" postImage="assets/insta-clone.png" />;
+
+      {postRenders}
     </div>
   );
 }

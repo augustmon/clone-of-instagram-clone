@@ -1,21 +1,21 @@
-'use strict';
+// import { useState } from '.././../useStateModule.js';
+('use strict');
 
 function StorySection() {
-  let image = '';
+  const [image, setImage] = React.useState('');
 
-  // setInterval(() => console.log('you see me every 2 seconds'), 2000);
-  // setInterval(() => (image = localStorage.getItem('data')));
-  // setInterval(() => console.log('CURRENT IMAGE: '), image);
+  let deletePost = document.getElementById('delete-post');
+  deletePost.addEventListener('click', changeImage);
 
+  function changeImage() {
+    setImage(localStorage.getItem('data'));
+  }
   return (
     <div className="stories__content">
-      <ReactStory
-        username="my-shroomy"
-        storyImage="/public/assets/status/wet-air_cold.jpg"
-      />
+      <ReactStory username="my-shroomy" storyImage={image} />
       <ReactStory
         username="jules_xmas"
-        storyImage={localStorage.getItem('data')}
+        storyImage="assets/status/wet-air_lukewarm.jpg"
       />
       <ReactEmptyStory />
       <ReactEmptyStory />
