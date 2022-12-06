@@ -5,13 +5,22 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function PostSection() {
+  var postsocket = io();
+  postsocket.on('data', function (data) {
+    if (data !== null) {
+      deletePost();
+      alert('Mushroom ate your old post, and created a new story!');
+    }
+  });
+
   var _React$useState = React.useState(['assets/images/doll.jpeg', 'assets/images/mushroom.jpeg', 'assets/images/godzilla.jpeg', 'assets/images/momo.jpeg']),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       postArray = _React$useState2[0],
       setPostArray = _React$useState2[1];
 
-  var deleteBtn = document.getElementById('delete-post');
-  deleteBtn.addEventListener('click', deletePost);
+  // const deleteBtn = document.getElementById('delete-post');
+  // // const listener = document.getElementById.()
+  // deleteBtn.addEventListener('click', deletePost);
 
   function deletePost() {
     if (postArray.length == 0) {
@@ -31,11 +40,6 @@ function PostSection() {
   return React.createElement(
     'div',
     null,
-    React.createElement(
-      'h1',
-      null,
-      ' POSTS '
-    ),
     postRenders
   );
 }

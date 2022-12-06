@@ -1,15 +1,29 @@
-// import { useState } from '.././../useStateModule.js';
 ('use strict');
 
 function StorySection() {
-  const [image, setImage] = React.useState('');
+  // const [socket, setSocket] = React.useState();
+  // React.useEffect(() => {
+  //   console.log('connected');
+  // }, []);
 
-  let deletePost = document.getElementById('delete-post');
-  deletePost.addEventListener('click', changeImage);
+  // setTimeout(changeImage, 1000);
+
+  const storysocket = io();
+
+  // change image displayed using state
+  const [image, setImage] = React.useState('');
 
   function changeImage() {
     setImage(localStorage.getItem('data'));
   }
+
+  // push to localstorage and call changeImage everytime it gets some data:
+  storysocket.on('data', (data) => {
+    localStorage.setItem('data', data);
+    console.log(data);
+    changeImage();
+  });
+
   return (
     <div className="stories__content">
       <ReactStory username="my-shroomy" storyImage={image} />

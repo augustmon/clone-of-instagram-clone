@@ -1,6 +1,14 @@
 'use strict';
 
 function PostSection() {
+  const postsocket = io();
+  postsocket.on('data', (data) => {
+    if (data !== null) {
+      deletePost();
+      alert('Mushroom ate your old post, and created a new story!');
+    }
+  });
+
   const [postArray, setPostArray] = React.useState([
     'assets/images/doll.jpeg',
     'assets/images/mushroom.jpeg',
@@ -8,8 +16,9 @@ function PostSection() {
     'assets/images/momo.jpeg',
   ]);
 
-  const deleteBtn = document.getElementById('delete-post');
-  deleteBtn.addEventListener('click', deletePost);
+  // const deleteBtn = document.getElementById('delete-post');
+  // // const listener = document.getElementById.()
+  // deleteBtn.addEventListener('click', deletePost);
 
   function deletePost() {
     if (postArray.length == 0) {
@@ -35,7 +44,7 @@ function PostSection() {
 
   return (
     <div>
-      <h1> POSTS </h1>
+      {/* <h1> POSTS </h1> */}
 
       {postRenders}
     </div>

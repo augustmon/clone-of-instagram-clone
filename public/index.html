@@ -258,7 +258,7 @@
         </div>
     <!-- IMAGE PATHNAME  -->
     <!-- <h1 id="image-pathname"> HEYO</h1> -->
-    <button id="delete-post" onclick=""> DELETE LAST POST </button>
+    <!-- <button id="delete-post" onclick=""> DELETE LAST POST </button> -->
     
 
       </nav>
@@ -541,17 +541,20 @@
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
-      const socket = io();
-      console.log("connected");
-      socket.on("data", (data) => {
-        console.log(data);
+      // const socket = io();
+      // console.log("connected");
+      // socket.on("data", (data) => {
+      //   console.log(data);
+      //   localStorage.setItem('data', data)
+    // });
+
+
         // let path = document.getElementById("image-pathname")
         // path.innerText = "Image data: " + data
-        localStorage.setItem('data', data)
+        
         // document.getElementById('story-root').innerHTML = data
         // document.getElementById('reactpost-root').innerText = data
         
-        });
       // const imageBtn = document.getElementById("image-button")
       //   imageBtn.addEventListener('click', function() {
       //   socket.emit('fetch request', "fetch");

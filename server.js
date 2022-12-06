@@ -1,16 +1,20 @@
-//// SERVER SETUP ////
-let portsResult = [];
+/// YOUR PORT GOES HERE:
+const arduinoPort = '/dev/cu.usbmodem21301';
 
-async function getSerial() {
-  try {
-    await SerialPort.list().then((ports) =>
-      ports.forEach((port) => portsResult.push(port.path))
-    );
-    console.log(portsResult[0]);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// let portsResult = [];
+
+// async function getSerial() {
+//   try {
+//     await SerialPort.list().then((ports) =>
+//       ports.forEach((port) => portsResult.push(port.path))
+//     );
+//     console.log(portsResult[0]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+//// SERVER SETUP ////
 
 const express = require('express');
 const app = express();
@@ -30,10 +34,10 @@ io.on('connection', (socket) => {
     console.log('DISCONNECTED!');
   });
 });
-const port = process.env.PORT || 3000;
+const serverport = process.env.PORT || 3000;
 
-server.listen(port, () => {
-  console.log(`listening on ${port}`);
+server.listen(serverport, () => {
+  console.log(`listening on ${serverport}`);
 });
 
 //// SERIAL PORT READER ////
@@ -41,7 +45,7 @@ server.listen(port, () => {
 const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
 
-const humKeyWords = {
+/* const humKeyWords = {
   low: 'dry-air',
   medium: 'humid-air',
   high: 'wet-air',
@@ -72,14 +76,12 @@ function emitData() {
   } else {
     temIndexGlobal += 1;
   }
-}
+} */
 
 // const serialPorts = getSerial();
 // console.log(serialPorts);
 // const arduinoPort = serialPorts[0];
 // console.log(arduinoPort);
-
-/* const arduinoPort = '/dev/cu.usbmodem11301';
 
 const port = new SerialPort({ path: arduinoPort, baudRate: 9600 });
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' })); // Read the port data
@@ -139,8 +141,8 @@ parser.on('data', (data) => {
   }
 
   let keywordString = `${hum}_${tem}`;
-  let path = '/images/status/' + keywordString + '.jpg';
+  let path = 'assets/status/' + keywordString + '.jpg';
 
   io.emit('data', path);
   console.log(path);
-}); */
+});
