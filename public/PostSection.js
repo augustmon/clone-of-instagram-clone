@@ -4,36 +4,61 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-function PostSection() {
-  var postsocket = io();
-  postsocket.on('data', function (data) {
-    if (data !== null) {
-      deletePost();
-      alert('Mushroom ate your old post, and created a new story!');
-    }
-  });
+var socket = io();
+socket.on('connection', function () {
+  return console.log('connected to POST');
+});
 
-  var _React$useState = React.useState(['assets/images/doll.jpeg', 'assets/images/mushroom.jpeg', 'assets/images/godzilla.jpeg', 'assets/images/momo.jpeg']),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      postArray = _React$useState2[0],
-      setPostArray = _React$useState2[1];
+function PostSection() {
+  React.useEffect(function () {
+    socket.on('data', function () {
+      deletePost();
+      setPostState(postArray);
+      // console.log('useEffect postArray', postArray);
+      // alert('Mushroom ate your old post, and created a new story!');
+    });
+  }, []);
+
+  // React.useEffect(() => {
+  //   console.log('second useEffect');
+  // }, [postArray]);
+  // const [postArray, setPostArray] = React.useState([
+  //   'assets/images/doll.jpeg',
+  //   'assets/images/mushroom.jpeg',
+  //   'assets/images/godzilla.jpeg',
+  //   'assets/images/momo.jpeg',
+  // ]);
+
+  var postArray = ['assets/images/doll.jpeg', 'assets/images/mushroom.jpeg', 'assets/images/godzilla.jpeg', 'assets/images/momo.jpeg'];
+
+  // const [postRenders, setPostRenders] = React.useState('');
 
   // const deleteBtn = document.getElementById('delete-post');
   // // const listener = document.getElementById.()
   // deleteBtn.addEventListener('click', deletePost);
+  // console.log(postArray);
 
   function deletePost() {
-    if (postArray.length == 0) {
-      setPostArray(['assets/images/doll.jpeg', 'assets/images/mushroom.jpeg', 'assets/images/godzilla.jpeg', 'assets/images/momo.jpeg']);
+    if (postArray.length <= 0) {
+      postArray = ['assets/images/doll.jpeg', 'assets/images/mushroom.jpeg', 'assets/images/godzilla.jpeg', 'assets/images/momo.jpeg'];
     } else {
       var copyOfArray = [].concat(_toConsumableArray(postArray));
       copyOfArray.pop();
-      setPostArray(copyOfArray);
+      console.log('copy', copyOfArray);
+      postArray = copyOfArray;
+      console.log('new', postArray);
     }
   }
 
+  var _React$useState = React.useState(postArray),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      postState = _React$useState2[0],
+      setPostState = _React$useState2[1];
+
   // turning postArray into React-elements to render out on page
-  var postRenders = postArray.map(function (post, i) {
+
+
+  var postRenders = postState.map(function (post, i) {
     return post = React.createElement(ReactPost, { key: i, username: 'Me99', postImage: postArray[i] });
   });
 

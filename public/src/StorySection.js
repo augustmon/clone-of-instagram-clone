@@ -1,28 +1,19 @@
 ('use strict');
+const socket = io();
+socket.on('connection', () => console.log('Connected to STORY'));
 
 function StorySection() {
-  // const [socket, setSocket] = React.useState();
-  // React.useEffect(() => {
-  //   console.log('connected');
-  // }, []);
-
-  // setTimeout(changeImage, 1000);
-
-  const storysocket = io();
+  // push to localstorage and call changeImage everytime it gets some data:
+  React.useEffect(() => {
+    socket.on('data', (data) => {
+      localStorage.setItem('data', data);
+      console.log(data);
+      setImage(localStorage.getItem('data'));
+    });
+  }, []);
 
   // change image displayed using state
   const [image, setImage] = React.useState('');
-
-  function changeImage() {
-    setImage(localStorage.getItem('data'));
-  }
-
-  // push to localstorage and call changeImage everytime it gets some data:
-  storysocket.on('data', (data) => {
-    localStorage.setItem('data', data);
-    console.log(data);
-    changeImage();
-  });
 
   return (
     <div className="stories__content">

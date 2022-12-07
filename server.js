@@ -45,104 +45,118 @@ server.listen(serverport, () => {
 const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
 
-/* const humKeyWords = {
-  low: 'dry-air',
-  medium: 'humid-air',
-  high: 'wet-air',
-};
+function activateTest() {
+  const humKeyWords = {
+    low: 'dry-air',
+    medium: 'humid-air',
+    high: 'wet-air',
+  };
 
-const temKeyWords = {
-  low: 'freezing',
-  medium: 'lukewarm',
-  high: 'hot',
-};
+  const temKeyWords = {
+    low: 'freezing',
+    medium: 'lukewarm',
+    high: 'hot',
+  };
 
-let temIndexGlobal = 0;
-let hardpath = '/assets/status/';
-setInterval(emitData, 5000);
+  let temIndexGlobal = 0;
+  let hardpath = '/assets/status/';
+  setInterval(emitData, 500);
 
-const temKeys = Object.keys(temKeyWords);
-const temValues = Object.values(temKeyWords);
+  // const temKeys = Object.keys(temKeyWords);
+  const temValues = Object.values(temKeyWords);
 
-// You can clear a periodic function by uncommenting:
-// clearInterval(intervalId);
-function emitData() {
-  let newImage =
-    hardpath + humKeyWords.low + '_' + temValues[temIndexGlobal] + '.jpg';
-  io.emit('data', newImage);
-  console.log(newImage);
-  if (temIndexGlobal >= 2) {
-    temIndexGlobal = 0;
-  } else {
-    temIndexGlobal += 1;
-  }
-} */
+  // You can clear a periodic function by uncommenting:
+  // clearInterval(intervalId);
 
-// const serialPorts = getSerial();
-// console.log(serialPorts);
-// const arduinoPort = serialPorts[0];
-// console.log(arduinoPort);
-
-const port = new SerialPort({ path: arduinoPort, baudRate: 9600 });
-const parser = port.pipe(new ReadlineParser({ delimiter: '\n' })); // Read the port data
-
-// variables containing the data for the humidity and temperature
-let hum = '';
-let tem = '';
-
-const humKeyWords = {
-  low: 'dry-air',
-  medium: 'humid-air',
-  high: 'wet-air',
-};
-
-const temKeyWords = {
-  low: 'freezing',
-  medium: 'lukewarm',
-  high: 'hot',
-};
-
-port.on('open', () => {
-  console.log('serial port open');
-});
-parser.on('data', (data) => {
-  // reading each line
-  // depending on whether it starts with 'T' or 'H' will affect variables, `hum` or `tem`
-
-  // do this with temperature data (when line starts with 'T')
-  if (data[0] == 'T') {
-    let temdata = Number(data.slice(1));
-    // console.log("temperature is: " + temdata);
-
-    if (temdata < 10) {
-      tem = temKeyWords.low;
-    } else if (temdata > 22) {
-      tem = temKeyWords.high;
+  let lastClick = 0;
+  const delay = 3000;
+  function emitData() {
+    if (lastClick >= Date.now() - delay) return;
+    lastClick = Date.now();
+    let newImage =
+      hardpath + humKeyWords.low + '_' + temValues[temIndexGlobal] + '.jpg';
+    io.emit('data', newImage);
+    console.log(newImage);
+    if (temIndexGlobal >= 2) {
+      temIndexGlobal = 0;
     } else {
-      tem = temKeyWords.medium;
+      temIndexGlobal += 1;
+    }
+  }
+}
+function activateSerialPort() {
+  const port = new SerialPort({ path: arduinoPort, baudRate: 9600 });
+  const parser = port.pipe(new ReadlineParser({ delimiter: '\n' })); // Read the port data
+
+  // variables containing the data for the humidity and temperature
+  let hum = '';
+  let tem = '';
+
+  const humKeyWords = {
+    low: 'dry-air',
+    medium: 'humid-air',
+    high: 'wet-air',
+  };
+
+  const temKeyWords = {
+    low: 'freezing',
+    medium: 'lukewarm',
+    high: 'hot',
+  };
+
+  port.on('open', () => {
+    console.log('serial port open');
+  });
+  parser.on('data', (data) => {
+    // reading each line
+    // depending on whether it starts with 'T' or 'H' will affect variables, `hum` or `tem`
+
+    // do this with temperature data (when line starts with 'T')
+    if (data[0] == 'T') {
+      let temdata = Number(data.slice(1));
+      // console.log("temperature is: " + temdata);
+
+      if (temdata < 10) {
+        tem = temKeyWords.low;
+      } else if (temdata > 22) {
+        tem = temKeyWords.high;
+      } else {
+        tem = temKeyWords.medium;
+      }
+
+      // do this with humidity data (when line starts with 'H')
+    } else if (data[0] == 'H') {
+      let humdata = Number(data.slice(1));
+      // console.log("humidity is: " + humdata);
+
+      if (humdata < 50) {
+        hum = humKeyWords.low;
+      } else if (humdata > 75) {
+        hum = humKeyWords.high;
+      } else {
+        hum = humKeyWords.medium;
+      }
+
+      // do this if the line is NOT 'T' or 'H'
+    } else {
+      console.log(data);
     }
 
-    // do this with humidity data (when line starts with 'H')
-  } else if (data[0] == 'H') {
-    let humdata = Number(data.slice(1));
-    // console.log("humidity is: " + humdata);
+    let keywordString = `${hum}_${tem}`;
+    let path = 'assets/status/' + keywordString + '.jpg';
 
-    if (humdata < 50) {
-      hum = humKeyWords.low;
-    } else if (humdata > 75) {
-      hum = humKeyWords.high;
-    } else {
-      hum = humKeyWords.medium;
+    let lastClick = 0;
+    const delay = 4000;
+    function emitImage() {
+      if (lastClick >= Date.now() - delay) return;
+      lastClick = Date.now();
+
+      io.emit('data', path);
+      console.log(path);
     }
+    emitImage();
+  });
+}
 
-    // do this if the line is NOT 'T' or 'H'
-  } else {
-    console.log(data);
-  }
-
-  let keywordString = `${hum}_${tem}`;
-  let path = 'assets/status/' + keywordString + '.jpg';
-
-  io.emit('data', path);
-  console.log(path);
-});
+// activateSerialPort();
+activateTest();
