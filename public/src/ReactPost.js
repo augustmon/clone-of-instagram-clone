@@ -6,14 +6,14 @@ function ReactPost(props) {
       <div className="post__header">
         <div className="post__profile">
           <a
-            href="https://github.com/leocosta1"
+            // href="https://github.com/leocosta1"
             target="_blank"
             className="post__avatar"
           >
-            <img src="assets/default-user.png" alt="User Picture" />
+            <img src="assets/images/doll.jpeg" alt="User Picture" />
           </a>
           <a
-            href="https://github.com/leocosta1"
+            // href="https://github.com/leocosta1"
             target="_blank"
             className="post__user"
           >
@@ -117,8 +117,12 @@ function ReactPost(props) {
         </div>
         <div className="post__infos">
           <div className="post__likes">
-            <a href="#" className="post__likes-avatar">
-              <img src="assets/default-user.png" alt="User Picture" />
+            <a
+              href="https://en.wikipedia.org/wiki/Scatman_John"
+              target="blank"
+              className="post__likes-avatar"
+            >
+              <img src="assets/images/john.jpg" alt="User Picture" />
             </a>
             <span>
               Liked by{' '}
@@ -132,7 +136,7 @@ function ReactPost(props) {
             <span>
               <a
                 className="post__name--underline"
-                href="https://github.com/leocosta1"
+                // href="https://github.com/leocosta1"
                 target="_blank"
               >
                 {props.username}{' '}

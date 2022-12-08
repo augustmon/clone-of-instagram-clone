@@ -13,7 +13,12 @@ const postsContent = document.querySelectorAll('.post__content');
 const myCeliumButton = document.getElementById('mycelium-btn');
 myCeliumButton.addEventListener('click', () =>
   alert(
-    `Your myCelium is active. \nIt will eat one of your posts everyday and generate a new story!`
+    `
+    Your MyCelium is active! 
+    It will delete unpopular posts from 2020-2021. 
+    It will eat one post everyday and generate a new story!
+
+    Approximate time to finish: 5 days`
   )
 );
 

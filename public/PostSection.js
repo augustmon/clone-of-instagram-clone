@@ -4,35 +4,23 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var socket = io();
-socket.on('connection', function () {
+var postSocket = io();
+postSocket.on('connection', function () {
   return console.log('connected to POST');
 });
 
 function PostSection() {
   React.useEffect(function () {
-    // console.log('first use effect');
-    socket.on('data', function () {
+    console.log('first use effect');
+    postSocket.on('delete', function () {
       deletePost();
       setPostState(postArray);
       // console.log('useEffect postArray', postArray);
-      // alert('Mushroom ate your old post, and created a new story!');
+      alert('Mushroom ate your old post, and created a new story!');
     });
   }, []);
 
-  // React.useEffect(() => {
-  //   console.log('second useEffect');
-  // }, [postArray]);
-  // const [postArray, setPostArray] = React.useState([
-  //   'assets/images/doll.jpeg',
-  //   'assets/images/mushroom.jpeg',
-  //   'assets/images/godzilla.jpeg',
-  //   'assets/images/momo.jpeg',
-  // ]);
-
   var postArray = ['assets/images/cat1.jpg', 'assets/images/cat2.jpg', 'assets/images/cat3.jpg', 'assets/images/cat4.jpg', 'assets/images/cat5.jpg'];
-
-  // const [postRenders, setPostRenders] = React.useState('');
 
   // const deleteBtn = document.getElementById('delete-post');
   // // const listener = document.getElementById.()
@@ -60,7 +48,7 @@ function PostSection() {
 
 
   var postRenders = postState.map(function (post, i) {
-    return post = React.createElement(ReactPost, { key: i, username: 'kamma', postImage: postArray[i] });
+    return post = React.createElement(ReactPost, { key: i, username: 'doll-e', postImage: postArray[i] });
   });
 
   return React.createElement(

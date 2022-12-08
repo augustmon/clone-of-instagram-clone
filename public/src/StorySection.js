@@ -1,11 +1,11 @@
 ('use strict');
-const socket = io();
-socket.on('connection', () => console.log('Connected to STORY'));
+const storySocket = io();
+storySocket.on('connection', () => console.log('Connected to STORY'));
 
 function StorySection() {
   // push to localstorage and call changeImage everytime it gets some data:
   React.useEffect(() => {
-    socket.on('data', (data) => {
+    storySocket.on('data', (data) => {
       localStorage.setItem('data', data);
       console.log(data);
       setImage(localStorage.getItem('data'));

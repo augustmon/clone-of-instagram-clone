@@ -12,7 +12,10 @@
 4. (script til at vise story i stoerre format onclick) √
 
 CODE TO START JSX PREPROCESSOR in the public directory:
-npx babel --watch public/src --out-dir public --presets react-app/prod
+`npx babel --watch public/src --out-dir public --presets react-app/prod`
+
+CODE TO GET CURRENT USB CONNECTIONS TO PORT
+`ls /dev/{tty,cu}.*`
 
 5. Activate all functions only on incoming data!
    - delete post

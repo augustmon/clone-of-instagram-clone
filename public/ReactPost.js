@@ -13,16 +13,16 @@ function ReactPost(props) {
         React.createElement(
           "a",
           {
-            href: "https://github.com/leocosta1",
+            // href="https://github.com/leocosta1"
             target: "_blank",
             className: "post__avatar"
           },
-          React.createElement("img", { src: "assets/default-user.png", alt: "User Picture" })
+          React.createElement("img", { src: "assets/images/doll.jpeg", alt: "User Picture" })
         ),
         React.createElement(
           "a",
           {
-            href: "https://github.com/leocosta1",
+            // href="https://github.com/leocosta1"
             target: "_blank",
             className: "post__user"
           },
@@ -160,8 +160,12 @@ function ReactPost(props) {
           { className: "post__likes" },
           React.createElement(
             "a",
-            { href: "#", className: "post__likes-avatar" },
-            React.createElement("img", { src: "assets/default-user.png", alt: "User Picture" })
+            {
+              href: "https://en.wikipedia.org/wiki/Scatman_John",
+              target: "blank",
+              className: "post__likes-avatar"
+            },
+            React.createElement("img", { src: "assets/images/john.jpg", alt: "User Picture" })
           ),
           React.createElement(
             "span",
@@ -191,9 +195,9 @@ function ReactPost(props) {
             React.createElement(
               "a",
               {
-                className: "post__name--underline",
-                href: "https://github.com/leocosta1",
-                target: "_blank"
+                className: "post__name--underline"
+                // href="https://github.com/leocosta1"
+                , target: "_blank"
               },
               props.username,
               ' '

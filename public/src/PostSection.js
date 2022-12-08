@@ -1,27 +1,17 @@
 'use strict';
-const socket = io();
-socket.on('connection', () => console.log('connected to POST'));
+const postSocket = io();
+postSocket.on('connection', () => console.log('connected to POST'));
 
 function PostSection() {
   React.useEffect(() => {
-    // console.log('first use effect');
-    socket.on('data', () => {
+    console.log('first use effect');
+    postSocket.on('delete', () => {
       deletePost();
       setPostState(postArray);
       // console.log('useEffect postArray', postArray);
-      // alert('Mushroom ate your old post, and created a new story!');
+      alert('Mushroom ate your old post, and created a new story!');
     });
   }, []);
-
-  // React.useEffect(() => {
-  //   console.log('second useEffect');
-  // }, [postArray]);
-  // const [postArray, setPostArray] = React.useState([
-  //   'assets/images/doll.jpeg',
-  //   'assets/images/mushroom.jpeg',
-  //   'assets/images/godzilla.jpeg',
-  //   'assets/images/momo.jpeg',
-  // ]);
 
   let postArray = [
     'assets/images/cat1.jpg',
@@ -30,8 +20,6 @@ function PostSection() {
     'assets/images/cat4.jpg',
     'assets/images/cat5.jpg',
   ];
-
-  // const [postRenders, setPostRenders] = React.useState('');
 
   // const deleteBtn = document.getElementById('delete-post');
   // // const listener = document.getElementById.()
@@ -61,7 +49,7 @@ function PostSection() {
   // turning postArray into React-elements to render out on page
   let postRenders = postState.map(function (post, i) {
     return (post = (
-      <ReactPost key={i} username="kamma" postImage={postArray[i]} />
+      <ReactPost key={i} username="doll-e" postImage={postArray[i]} />
     ));
   });
 
