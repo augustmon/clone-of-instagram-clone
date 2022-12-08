@@ -135,9 +135,9 @@ function ReactPost(props) {
                 href="https://github.com/leocosta1"
                 target="_blank"
               >
-                leocosta1
+                {props.username}{' '}
               </a>
-              Responsive clone of Instagram UI. Made with ❤ for study purposes.
+              #cat #cutecat #fluffyfriend
             </span>
           </div>
           <span className="post__date-time">30 minutes ago</span>

@@ -4,6 +4,7 @@ socket.on('connection', () => console.log('connected to POST'));
 
 function PostSection() {
   React.useEffect(() => {
+    // console.log('first use effect');
     socket.on('data', () => {
       deletePost();
       setPostState(postArray);
@@ -23,10 +24,11 @@ function PostSection() {
   // ]);
 
   let postArray = [
-    'assets/images/doll.jpeg',
-    'assets/images/mushroom.jpeg',
-    'assets/images/godzilla.jpeg',
-    'assets/images/momo.jpeg',
+    'assets/images/cat1.jpg',
+    'assets/images/cat2.jpg',
+    'assets/images/cat3.jpg',
+    'assets/images/cat4.jpg',
+    'assets/images/cat5.jpg',
   ];
 
   // const [postRenders, setPostRenders] = React.useState('');
@@ -39,17 +41,18 @@ function PostSection() {
   function deletePost() {
     if (postArray.length <= 0) {
       postArray = [
-        'assets/images/doll.jpeg',
-        'assets/images/mushroom.jpeg',
-        'assets/images/godzilla.jpeg',
-        'assets/images/momo.jpeg',
+        'assets/images/cat1.jpg',
+        'assets/images/cat2.jpg',
+        'assets/images/cat3.jpg',
+        'assets/images/cat4.jpg',
+        'assets/images/cat5.jpg',
       ];
     } else {
       const copyOfArray = [...postArray];
       copyOfArray.pop();
-      console.log('copy', copyOfArray);
+      // console.log('copy', copyOfArray);
       postArray = copyOfArray;
-      console.log('new', postArray);
+      // console.log('new', postArray);
     }
   }
 

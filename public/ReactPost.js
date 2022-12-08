@@ -194,9 +194,10 @@ function ReactPost(props) {
                 href: "https://github.com/leocosta1",
                 target: "_blank"
               },
-              "leocosta1"
+              props.username,
+              ' '
             ),
-            "Responsive clone of Instagram UI. Made with \u2764 for study purposes."
+            "#cat #cutecat #fluffyfriend"
           )
         ),
         React.createElement(
