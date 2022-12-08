@@ -121,9 +121,9 @@ function ReactPost(props) {
               <img src="assets/default-user.png" alt="User Picture" />
             </a>
             <span>
-              Liked by
+              Liked by{' '}
               <a className="post__name--underline" href="#">
-                user123
+                catman_john
               </a>{' '}
               and <a href="#"> 73 others</a>
             </span>

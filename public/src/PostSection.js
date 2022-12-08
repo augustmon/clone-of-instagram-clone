@@ -61,7 +61,7 @@ function PostSection() {
   // turning postArray into React-elements to render out on page
   let postRenders = postState.map(function (post, i) {
     return (post = (
-      <ReactPost key={i} username="Me99" postImage={postArray[i]} />
+      <ReactPost key={i} username="kamma" postImage={postArray[i]} />
     ));
   });
 

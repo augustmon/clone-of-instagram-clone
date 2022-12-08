@@ -26,10 +26,10 @@ function StorySection() {
   return React.createElement(
     'div',
     { className: 'stories__content' },
-    React.createElement(ReactStory, { username: 'my-shroomy', storyImage: image }),
+    React.createElement(ReactStory, { username: 'my-celium', storyImage: image }),
     React.createElement(ReactStory, {
-      username: 'jules_xmas',
-      storyImage: 'assets/status/wet-air_lukewarm.jpg'
+      username: 'toys4xmas',
+      storyImage: 'assets/images/godzilla.jpeg'
     }),
     React.createElement(ReactEmptyStory, null),
     React.createElement(ReactEmptyStory, null),

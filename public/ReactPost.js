@@ -167,10 +167,11 @@ function ReactPost(props) {
             "span",
             null,
             "Liked by",
+            ' ',
             React.createElement(
               "a",
               { className: "post__name--underline", href: "#" },
-              "user123"
+              "catman_john"
             ),
             ' ',
             "and ",

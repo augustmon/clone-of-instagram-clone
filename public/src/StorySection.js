@@ -17,10 +17,10 @@ function StorySection() {
 
   return (
     <div className="stories__content">
-      <ReactStory username="my-shroomy" storyImage={image} />
+      <ReactStory username="my-celium" storyImage={image} />
       <ReactStory
-        username="jules_xmas"
-        storyImage="assets/status/wet-air_lukewarm.jpg"
+        username="toys4xmas"
+        storyImage="assets/images/godzilla.jpeg"
       />
       <ReactEmptyStory />
       <ReactEmptyStory />

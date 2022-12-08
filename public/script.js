@@ -7,6 +7,16 @@ const posts = document.querySelectorAll('.post');
 const postsContent = document.querySelectorAll('.post__content');
 
 // ===================================
+
+// Button
+
+const myCeliumButton = document.getElementById('mycelium-btn');
+myCeliumButton.addEventListener('click', () =>
+  alert(
+    `Your myCelium is active. \nIt will eat one of your posts everyday and generate a new story!`
+  )
+);
+
 // DARK/LIGHT THEME
 // Set initial theme from LocalStorage
 document.onload = setInitialTheme(localStorage.getItem('theme'));

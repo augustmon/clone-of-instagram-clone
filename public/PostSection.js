@@ -60,7 +60,7 @@ function PostSection() {
 
 
   var postRenders = postState.map(function (post, i) {
-    return post = React.createElement(ReactPost, { key: i, username: 'Me99', postImage: postArray[i] });
+    return post = React.createElement(ReactPost, { key: i, username: 'kamma', postImage: postArray[i] });
   });
 
   return React.createElement(
