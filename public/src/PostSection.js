@@ -9,9 +9,22 @@ function PostSection() {
       deletePost();
       setPostState(postArray);
       // console.log('useEffect postArray', postArray);
-      alert('Mushroom ate your old post, and created a new story!');
+      tempAlert('Mushroom ate your old post, and created a new story!', 2000);
     });
   }, []);
+
+  function tempAlert(msg, duration) {
+    var el = document.createElement('div');
+    el.setAttribute(
+      'style',
+      'position:absolute;top:7%;left:20%;background-color:#F5F5F5; border-radius:10px; padding: 2px'
+    );
+    el.innerHTML = msg;
+    setTimeout(function () {
+      el.parentNode.removeChild(el);
+    }, duration);
+    document.body.appendChild(el);
+  }
 
   let postArray = [
     'assets/images/cat1.jpg',

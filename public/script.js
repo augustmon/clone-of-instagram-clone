@@ -15,9 +15,12 @@ myCeliumButton.addEventListener('click', () =>
   alert(
     `
     Your MyCelium is active! 
-    It will delete unpopular posts from 2020-2021. 
+    
     It will eat one post everyday and generate a new story!
+    The created story will be based on your mushroom's status 
+    and any tags on the deleted post. 
 
+    It will delete your most unpopular posts from 2021-2022.
     Approximate time to finish: 5 days`
   )
 );
